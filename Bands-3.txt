@@ -1,0 +1,149 @@
+Bands 3
+Problem Description
+Two friends are shopping for friendship bands at a mall but face a tricky problem! The bands come in pairs inside cases where the bands are tangled together - perhaps interlocked. Cutting a band is not an option, so they need to figure out if there is a way to separate the bands without damaging them.
+
+The Setup:
+
+Band Cases: Each case contains a pair of friendship bands, presented as a 3D cube matrix (size S x S x S).
+Tangled Bands: Each band is represented by a sequence of movements: "u", "d", "f", "b", "l", and "r" representing up, down, front, back, left, and right respectively. Starting from a designated position in the cube matrix, each movement instruction places a unit cube (representing part of the band) sequentially. Refer the example below for better understanding.
+Important Rules:
+
+No Overlapping Bands: A particular cell within the cube matrix will not contain more than one unit cube at a time.
+Visual Aid: The top-front-left corner of the cube matrix is (0,0,0), and the bottom-back-right corner is (S-1, S-1, S-1).
+Coordinates: If the current cell is (ly,y,x)
+up = y-1
+down = y+1
+front = ly+1
+back = ly -1
+right = x +1
+left = x-1
+Example:
+
+Let us say the case size is 4 x 4 x 4. For now, assume it has only one band (for purpose of understanding the placement of band in the case). The starting position of the band is (1, 0, 1), and the band sequence is "dddrrbuuullf". Applying the sequence as per co-ordinate system mentioned above, this represents a series of movements that construct the band within the cube matrix. We will visualize them as below.
+
+The 4 x 4 x 4 cube divided into 4 - 4x4 matrix [Layers], indexed as (Layer, Row and Column).
+
+0000 0100 0111 0000
+
+0000 0100 0001 0000
+
+0000 0100 0001 0000
+
+0000 0111 0001 0000
+
+The last instruction connects the last unit cube of the band to the first unit cube to complete the band. The cells of the same band will not be placed above its cells again except it's the next cell
+
+Your Task:
+
+Given two friendship band placements represented by their starting positions and sequences of movement instructions, determine if it is possible to separate them without cutting any bands.
+
+Constraints
+5 < S < 40
+
+Input
+First line consists of an integer representing S, the side of the cube matrix.
+
+Next Line consist of three space separated integers denoting the starting position of Band 1
+
+Next Line consist of sequence of Band 1 placement comprising of characters from {"u","d" "f", "b","l" and "r"}
+
+Next Line consist of three space separated integers denoting the starting position of Band 2
+
+Last Line consist of sequence of Band 2 placement.
+
+Output
+Single integer representing the maximum number of cells one band is above another when not interlocked
+
+Else print "Impossible".
+
+Time Limit (secs)
+1
+
+Examples
+Example 1
+
+Input
+
+4
+
+1 0 1
+
+dddrrbuuullf
+
+0 1 0
+
+rrbbbllfff
+
+Output
+
+Impossible
+
+Explanation
+
+We visualize the above as below
+
+Band 1
+
+0000 0100 0111 0000
+
+0000 0100 0001 0000
+
+0000 0100 0001 0000
+
+0000 0111 0001 0000
+
+Band 2
+
+0000 0000 0000 0000
+
+2220 2020 2020 2220
+
+0000 0000 0000 0000
+
+0000 0000 0000 0000
+
+Upon visualizing and making calculations, one can deduce that the 2 bands are interlocked and cannot be separated without cutting. Hence print 'Impossible' as output.
+
+Example 2
+
+Input
+
+4
+
+0 0 0
+
+rrrbbblllfff
+
+0 1 0
+
+rrrbbblllfff
+
+Output
+
+12
+
+Explanation
+
+The matrices below help visualize the position of bands provided in input
+
+Band 1
+
+1111 1001 1001 1111
+
+0000 0000 0000 0000
+
+0000 0000 0000 0000
+
+0000 0000 0000 0000
+
+Band 2
+
+0000 0000 0000 0000
+
+2222 2002 2002 2222
+
+0000 0000 0000 0000
+
+0000 0000 0000 0000
+
+The band 1 is just placed above the band 2. They are not interlocked and can be separated without cutting.12-unit cubes of band 1 is placed above unit cubes of band 2 and no unit cubes of band 2 is placed above unit cubes of band 1, thus the max is 12 ... max(12,0), thus the output is 12.
