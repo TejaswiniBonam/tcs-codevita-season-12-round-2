@@ -1,0 +1,94 @@
+Chess Key
+Problem Description
+You're tasked with calculating the number of unique chessboard positions achievable after 'd' plies (one-half moves).
+
+Here's the setup:
+
+Chessboard: Standard 8x8 grid.
+Pieces: At most three pieces of the same color: Queen, Rook, and Bishop.
+Placement: At least one of each piece must be present on the board.
+Depth (d): The number of plies (moves) to consider. A ply usually represents a half move in a 2-player game. In our case, since only one coloured pieces are placed, it should be construed to mean a move.
+Your Goal: Determine the total number of unique chessboard positions possible after 'd' plies.
+
+For better understanding the Chessboard, go through the details below.
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@22d6cac2:image1.png
+
+The positions of the chess pieces are represented using three characters:
+
+The first character is either Q, B, or R, denoting a Queen, Bishop, or Rook, respectively.
+The second character ranges from A to H, indicating the column in the chessboard.
+The third character ranges from 1 to 8, indicating the row in the chessboard.
+For example, QA8 represents a Queen positioned on the 8th row of the A column.
+
+Constraints
+0 < d < 5
+
+Input
+The first line specifies the positions of the pieces, separated by spaces.
+The second line indicates d, the ply depth
+
+Output
+A single integer representing number of unique board positions across a depth of d plies
+
+Time Limit (secs)
+1
+
+Examples
+Example 1
+
+Input
+
+QA3 RB3
+
+1
+
+Output
+
+27
+
+Explanation
+
+Below shows the initial state. After every move, the board position will be recorded.
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@22d6cac2:image2.png
+
+In this chess position, either the Queen or the Rook will be moved on the next turn (one ply).
+
+Queen's Movement: The Queen can be legally placed in 14 distinct squares: a1, a2, a4 to a8, b2, c1, b4 to f8.
+Rook's Movement: The Rook can occupy 13 unique squares: b1, b2, b4 to b8, and c3 to h3.
+Therefore, there are a total of 14 + 13 = 27 possible board positions after one ply (one move).
+
+Print 27 as the output, representing the number of unique board positions achievable within a depth of 1 ply.
+
+Example 2
+
+Input
+
+QA3
+
+2
+
+Output
+
+64
+
+Explanation
+
+At a depth of 2 positions on an empty board (Queen is the only piece on the board), it will cover all 64 distinct squares. Hence only 64 unique positions are possible. Hence print 64 as output.
+
+Example 3
+
+Input
+
+QA3 RB3
+
+2
+
+Output
+
+388
+
+Explanation
+
+At a depth of 2 position with Queen at a3, Rook at b3, 388 is the number of unique board positions achievable within a depth of 2 ply.
