@@ -1,0 +1,124 @@
+Min Office Hours
+Problem Description
+An IT organization is trying to improve employee productivity by implementing mandatory work hours. However, employees are finding ways to avoid these hours, such as taking extended breaks or "tailgating" (following others through entry systems without swiping their ID cards). This leads to difficulties in accurately tracking work time.
+
+The manager of a specific project wants to identify the employee who spends the least amount of time working to implement a penalty system. He suspects one employee but needs help verifying if this suspicion is accurate.
+
+Data:
+
+Log Records: A daily log on a particular day of employee ID card swipes at various locations, including:
+Rooms (e.g., room1, room2...roomN)
+Cafeterias (e.g., cafeteria1, cafeteria2...cafeteriaM)
+Pantries (e.g., pantry1, pantry2...pantryN)
+Challenge: Analyse the log data to determine:
+
+Actual Work Time: Calculate the time spent working by each employee in any room, excluding breaks and time spent in pantries and cafeterias.
+Suspect Verification: Confirm if the suspected employee truly spends the least amount of time working compared to all other project members.
+Constraints
+5 < N < 200
+
+10 < Employee ID < 1000
+
+Input
+Line 1: N - This integer represents the total number of log entries recorded by the system.
+Lines 2 to N+1: Log Entries - Each line describes a single employee activity and follows this structure:
+EmployeeID: An integer representing the unique ID of the employee.
+Activity: A string indicating either "enters" or "exits".
+Location: A string specifying where the activity occurred (e.g., "room1", "cafeteria2", "pantry3").
+Time: A string representing the time of the activity in 12-hour format (e.g., "10:30 AM").
+Line N+2: Suspect EmployeeID - This line contains a single integer, the ID of the employee the manager is suspicious about.
+Output
+Single line consisting of 'Yes/No/Cannot be determined'.
+
+Yes - if the manager's suspicion is correct
+
+No - if the manager's suspicion is incorrect
+
+Cannot be determined - if it is not possible to determine whether the suspected employee had worked for the least duration or not.
+
+Time Limit (secs)
+1
+
+Examples
+Example 1
+
+Input
+
+10
+
+101 enters cafeteria1 9:01AM
+
+101 exits cafeteria1 10:17AM
+
+154 enters room5 9:15AM
+
+153 exits room4 11:40AM
+
+153 enters pantry2 2:00PM
+
+101 enters room4 12:01PM
+
+154 exits room5 1:05PM
+
+153 exits pantry2 4:00PM
+
+153 enters room4 10:16AM
+
+101 exits room4 1:25PM
+
+153
+
+Output
+
+Yes
+
+Explanation
+
+Analysis:
+
+Based on the 10 log entries provided, employees with ID 101 and 153 have the shortest working duration at 1 hour and 24 minutes. This calculation only considers time spent in workrooms (e.g., "room1", "room3") and excludes time in cafeterias or pantries.
+The manager is specifically questioning employee ID 153's actual work time.
+Answer: Yes, the manager has a valid reason to doubt EmployeeID 153 as being the one with least working hours.
+
+Example 2
+
+Input
+
+10
+
+101 enters cafeteria1 9:01AM
+
+101 exits cafeteria1 10:17AM
+
+154 enters room5 9:15AM
+
+153 exits room4 11:20AM
+
+153 enters pantry2 2:00PM
+
+101 enters room6 12:01PM
+
+154 exits room5 1:05PM
+
+153 exits pantry2 4:00PM
+
+153 enters room4 10:16AM
+
+101 exits room4 1:49PM
+
+153
+
+Output
+
+Cannot be determined
+
+Explanation
+
+Analysis:
+
+The system recorded only 10 logs in total.
+Employee ID 101's work time is unreliable due to missing entry and exit logs.
+We only have records of them entering room 4 and exiting room 6, suggesting potential tailgating (following another employee through the entry system without swiping their own ID card).
+Conclusion:
+
+Because of incomplete log data for EmployeeID 101, we cannot definitively determine whether they worked for the shortest duration compared to other employees. The missing logs raise questions about their actual work time.
