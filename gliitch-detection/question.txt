@@ -1,0 +1,103 @@
+Glitch Detection
+Problem Description
+Kumar's calculator has developed a glitch, and he needs your help to fix it!
+
+His calculator uses a seven-segment display to show characters. Each character is represented as a 3x3 matrix. The problem is one of the LEDs in the display is malfunctioning.
+
+To find the faulty LED, Kumar entered an equation on his calculator. The left-hand side (LHS) of the equation includes brackets, numbers, and operators, while the right-hand side (RHS) has a single value.
+
+He knows that only one LED is faulty, and the LEDs for brackets are working fine. Can you help Kumar figure out the zero-based index of the character with the faulty LED? Remember to include operators and brackets when counting from left to right.
+
+The arrangement of 7 segment display for each number from 0-9 is shown below.
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@cd7f1ae:image1.pngcom.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@cd7f1ae:image2.png
+
+
+Fig. 1 Fig. 2
+
+The arrangement of 7 segment display for the 5 mathematical operations is shown below.
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@cd7f1ae:image3.png
+
+Fig. 3
+
+The arrangement of 7 segment display for the opening and closing brackets is shown below.
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@cd7f1ae:image4.png
+
+Fig. 4
+
+Given the seven-segment display of the entire equation (including LHS, RHS and "="), find the index of the faulty character.
+
+Constraints
+1 <= N <= 50
+
+Follow BODMAS rules while performing the calculations.
+
+Equal to symbol and RHS will never be faulty.
+
+It is guaranteed that there will be only one solution possible.
+
+Input
+First line consists of an integer N denoting the number of characters in the given entire equation.
+
+Next 3 lines consists of the matrix of size 3*(N*3) representing the seven-segment display of the equation.
+
+Output
+Print a single integer denoting the zero-basis index of the character that is faulty. If the equation is perfect and do not have any faulty characters, print "Perfect".
+
+Time Limit (secs)
+1
+
+Examples
+Example 1
+
+Input
+
+9
+
+_ | _ _ | _
+
+_| _|| | _||_| | _ _|
+
+|_ || | ||_| | _ |_
+
+Output
+
+5
+
+Explanation
+
+The equation given in the input is -
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@cd7f1ae:image5.png
+
+which represents 2+[1*8]=2
+
+Upon evaluation, the LHS value is 10, while the RHS value is 2, resulting in an invalid equation. To fix this, toggle the middle LED of the digit 8. The equation then becomes 2+[1*0]=2, where both LHS and RHS are equal. Since the index of the faulty character is 5, output 5.
+
+Example 2
+
+Input
+
+28
+
+| _ _ | | _ | _ | | _ _ _ _ | _ _ | _ _ _
+
+| | _| _| | _|| | _| _| | _|| | _| _| _| _||_ | _| || | | _ |_||_||_|
+
+| | ||_ | || | ||_ | || | |_ | _| | _| | | ||_| | _ _| _| _|
+
+Output
+
+7
+
+Explanation
+
+The equation given in the input is -
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@cd7f1ae:image6.png
+
+which is [7+2]+[1+2]*[[2*3+5]*10]=999
+
+Upon evaluation, the LHS value is 339, while the RHS value is 999, resulting in an invalid equation. To fix this, toggle the one LED of the digit at index 7 to make it 7. The equation then becomes [7+2]+[7+2]*[[2*3+5]*10]=999, where both LHS and RHS are equal. Since the index of the faulty character is 7, output 7.
