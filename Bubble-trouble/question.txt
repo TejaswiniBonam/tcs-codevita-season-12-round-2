@@ -1,0 +1,152 @@
+Bubble Trouble
+Problem Description
+
+Welcome to Bubble Land, an underwater world where everything is bubbly! You are navigating with a bubble-shaped vehicle through this fantastical place, starting at one point and aiming for another.
+
+Here is the catch:
+
+Bubble Buildings: Structures are represented by their centre coordinates and radius, all enclosed within square borders.
+Tax Lines: Imaginary lines connect building centres, acting like toll roads. Crossing a tax line incurs a fee (touching does not!). These lines don't intersect.
+Your Vehicle: It is also bubble-shaped, with its own centre and radius.
+Your Mission:
+
+Find the path between your starting point and destination while avoiding:
+
+Overlapping any building.
+Crossing tax lines unnecessarily.
+Navigate Bubble Land and minimize those annoying taxes!
+
+Constraints
+
+5 < S <= 50
+
+3 < N < 20
+
+0 <= x, y <= S
+
+0 < Radius of Buildings < 10
+
+1 < Radius of vehicle < 10
+
+0 < Tax lines < 20
+
+Input
+
+Line 1: A single integer S, representing the length of one side of Bubble Land (the size of the square area).
+
+Line 2: Three space-separated integers:
+
+x: The x-coordinate of your vehicle's centre.
+y: The y-coordinate of your vehicle's centre.
+r: The radius of your bubble vehicle.
+Line 3: Two space-separated integers:
+
+x: The x-coordinate of the destination.
+y: The y-coordinate of the destination.
+Line 4: A single integer N, representing the number of buildings in Bubble Land.
+
+Lines 5 to N+4: Each line contains three space-separated integers:
+
+x: The x-coordinate of a building's centre.
+y: The y-coordinate of a building's centre.
+r: The radius of the building.
+Line N+5: A single integer T, representing the number of tax lines in Bubble Land.
+
+Lines N+6 to N+T+5: Each line contains two space-separated integers:
+
+: The index of bubble building of one end of a tax line (building centre).
+: The index of bubble building the other end of a tax line .
+Index of the building starts from 1 , index the buildings in the given order in input
+
+
+Output
+
+Single integer representing minimum number of tax lines to be crossed. If the destination is unreachable, print Impossible.
+
+Time Limit (secs)
+
+1
+
+Examples
+
+Example 1
+
+Input
+
+25
+
+2 2 2
+
+15 11
+
+4
+
+7 11 5
+
+14 6 2
+
+22 4 2
+
+20 12 2
+
+4
+
+1 2
+
+2 3
+
+2 4
+
+3 4
+
+Output
+
+2
+
+Explanation
+
+The below diagram represents the given input.
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@11a82d0f:image1.png
+
+The path to reach destination without touching bubble building would be passing through tax lines drawn between buildings [2,3] and [2,4]. Here we are crossing 2 tax lines and that is the minimum possible. Hence, print the same.
+
+Example 2
+
+Input
+
+25
+
+4 4 3
+
+21 21
+
+4
+
+5 17 4
+
+10 9 4
+
+15 16 4
+
+20 9 4
+
+3
+
+1 2
+
+2 3
+
+3 4
+
+Output
+
+Impossible
+
+Explanation
+
+The below diagram represents the given input.
+
+com.tcs.cv.automata.ei.middleware.DocxToHtmlConverter@11a82d0f:image2.png
+
+From the image, it is not possible to reach destination without touching the bubble buildings. Hence print Impossible.
