@@ -1,0 +1,117 @@
+Maximum Strength
+Problem Description
+The Shark-Infested Island Escape
+
+Hari and his friend are trapped in a virtual island escape game! Their goal is simple yet perilous:
+
+Reach the other island faster than their opponent.
+Arrive with at least some strength remaining i.e., zero or greater.
+They start on one island, facing a treacherous ocean teeming with sharks of varying strengths. To cross the ocean, they must navigate a grid of paths, each taking a specific amount of time. Swimming across any unit of ocean reduces their strength by one, regardless of encountering a shark.
+
+The Catch:
+
+Shark Encounters: If Hari encounters a shark, he must fight it. His strength must be equal to or greater than the shark's. If successful, his strength will be reduced by the shark's strength.
+Time vs. Strength: Hari needs to find the fastest path possible while minimizing strength loss.
+The Game Matrix: A grid represents the ocean, where each cell shows the strength of a lurking shark:
+
+Movement: Hari can only move horizontally or vertically, never diagonally.
+Hari's Mission:
+
+Help Hari find the optimal path through this shark-infested ocean!
+
+Your Task
+
+Find the amount of time it takes to reach the other island using this path.
+Find the amount of strength Hari will have remaining when he arrives.
+If no feasible path exists (where Hari maintains at least zero strength), print 'Not Possible.'
+
+Constraints
+3 <= N, M <= 100
+
+0 <= strength_of_shark <= 200
+
+0 <= time_at_path <= 1000
+
+5 <= K <= 10000
+
+Input
+First line contains integer 'N' and 'M' - rows and columns in the matrix.
+
+Next N lines contain M integers describing the strengths of the sharks in the ocean and 'S' or 'D' defining players' source and destination, respectively.
+
+Next N lines contain M integers describing the time taken by players in the path.
+
+The last line contains an integer 'K' describing the initial strength of both the players.
+
+Output
+Two integers - Time and Strength in which he can reach the island (if it is possible for Hari to win the level).
+
+'Not Possible' (if it is not possible for Hari to win the level).
+
+Time Limit (secs)
+1
+
+Examples
+Example 1
+
+Input
+
+3 4
+
+0 1 4 3
+
+S 1 1 2
+
+1 2 5 D
+
+10 6 5 9
+
+0 5 4 9
+
+2 3 7 8
+
+10
+
+Output
+
+26 2
+
+Explanation
+
+Hari and his friend, both are initially on the island with indices (1, 0) and they must reach on the island with indices (2, 3) with strength '10'. Hari can follow the path with sequence of indices as follows...
+
+(1, 0) -> (1,1) -> (1, 2) -> (1, 3) -> (2, 3)
+
+This path will lead Hari with minimum time and maximum strength.
+
+Time -> 5 + 4 + 9 + 8 = 26
+
+Strength -> 10 - 1 - 1 - 2 - 0 (Destination) - 4 (Strength is reduced by one when they pass each cell) = 2
+
+Example 2
+
+Input
+
+3 4
+
+0 3 5 1
+
+2 S 4 D
+
+2 1 8 1
+
+5 10 2 12
+
+4 0 5 11
+
+2 7 7 8
+
+5
+
+Output
+
+Not Possible
+
+Explanation
+
+Hari and his friend start from indices (1, 1) and end with indices (1, 2). It can be clearly seen that there is no path which can take Hari to his destination island with him remaining with non-negative strength.
